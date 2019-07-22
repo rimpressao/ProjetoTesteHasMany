@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @pre_enrollment.semester %>
+</p>
+
+<p>
+  <strong>Date initial:</strong>
+  <%= @pre_enrollment.date_initial %>
+</p>
+
+<p>
+  <strong>Date final:</strong>
+  <%= @pre_enrollment.date_final %>
+</p>
+
+<%= link_to 'Edit', edit_pre_enrollment_path(@pre_enrollment) %> |
+<%= link_to 'Back', pre_enrollments_path %>

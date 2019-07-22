@@ -1,0 +1,44 @@
+<%= form_for(pre_enrollment) do |f| %>
+  <% if pre_enrollment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pre_enrollment.errors.count, "error") %> prohibited this pre_enrollment from being saved:</h2>
+
+      <ul>
+      <% pre_enrollment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :semester %>
+    <%= f.text_field :semester %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_initial %>
+    <%= f.datetime_select :date_initial %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_final %>
+    <%= f.datetime_select :date_final %>
+  </div>
+  
+  <h4>Disciplines_enrollments</h4>
+  <div id="disciplines_enrollments">
+    <%= f.fields_for :disciplines_enrollments do |disciplines_enrollment| %>
+      <%= render 'disciplines_enrollment_fields', f: disciplines_enrollment %>
+    <% end %>
+    
+    <div class="links">
+      <%= link_to_add_association 'add disciplines_enrollment', f, :disciplines_enrollments %>
+      <br><br>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
