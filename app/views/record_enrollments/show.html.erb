@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pre enrollment:</strong>
+  <%= @record_enrollment.pre_enrollment %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @record_enrollment.student %>
+</p>
+
+<%= link_to 'Edit', edit_record_enrollment_path(@record_enrollment) %> |
+<%= link_to 'Back', record_enrollments_path %>

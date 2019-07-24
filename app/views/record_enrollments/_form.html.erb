@@ -1,0 +1,34 @@
+<%= form_for(record_enrollment) do |f| %>
+  <% if record_enrollment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(record_enrollment.errors.count, "error") %> prohibited this record_enrollment from being saved:</h2>
+
+      <ul>
+      <% record_enrollment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pre_enrollment_id %>
+    <%= f.text_field :pre_enrollment_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :student_id %>
+    <%= f.text_field :student_id %>
+  </div>
+
+  <div class = "field">
+    <% @disciplinas.each do |disciplina| -%>
+      <%= check_box_tag :disciplines_enrollment_id, disciplina.id, @record_enrollment.disciplines_enrollments.include?(disciplina), :name => 'record_enrollment[disciplines_enrollment_ids][]' -%>
+      <%= label_tag :disciplines_enrollment_ids, disciplina.name -%>
+    <% end -%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

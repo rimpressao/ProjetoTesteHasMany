@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190722121957) do
+ActiveRecord::Schema.define(version: 20190724195125) do
+
+  create_table "association_enrollments", force: :cascade do |t|
+    t.integer  "disciplines_enrollment_id"
+    t.integer  "record_enrollment_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["disciplines_enrollment_id"], name: "index_association_enrollments_on_disciplines_enrollment_id"
+    t.index ["record_enrollment_id"], name: "index_association_enrollments_on_record_enrollment_id"
+  end
 
   create_table "disciplines_enrollments", force: :cascade do |t|
     t.string   "code"
@@ -32,11 +41,11 @@ ActiveRecord::Schema.define(version: 20190722121957) do
 
   create_table "record_enrollments", force: :cascade do |t|
     t.integer  "pre_enrollment_id"
-    t.integer  "disciplines_enrollment_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["disciplines_enrollment_id"], name: "index_record_enrollments_on_disciplines_enrollment_id"
+    t.integer  "student_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["pre_enrollment_id"], name: "index_record_enrollments_on_pre_enrollment_id"
+    t.index ["student_id"], name: "index_record_enrollments_on_student_id"
   end
 
 end
